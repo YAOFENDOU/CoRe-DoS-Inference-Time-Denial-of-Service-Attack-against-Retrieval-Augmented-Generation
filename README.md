@@ -4,7 +4,6 @@
 ## Repository Structure
 
 ```
-code_release/
 ├── attack/                  Blocker generation and injection logic
 │   ├── blocker.py           CoRe-DoS blocker document construction
 │   └── injector.py          Adversarial document injection into RAG context
@@ -34,14 +33,6 @@ python experiments/run_experiment.py \
     --config experiments/configs/config_mistral_7b_nq_instruction_injection.yaml
 ```
 
-### 3. Evaluate RAGuard defense
-```bash
-python raguard_eval/run_evaluation.py \
-    --results-dir  /path/to/results/defense_topk_replace_nq \
-    --doc-path     /path/to/nq/documents.jsonl \
-    --dataset      NQ \
-    --output       raguard_eval/results/raguard_eval_nq.json
-```
 
 ## Data
 
@@ -57,6 +48,5 @@ Each YAML config file specifies:
 - `trigger`: keyword or semantic trigger settings
 - `attack`: mode (instruction_injection / instruction_replace), insert position
 - `llm`: model name, inference parameters
-- `defense`: which defenses to enable
 - `output`: results directory
 
