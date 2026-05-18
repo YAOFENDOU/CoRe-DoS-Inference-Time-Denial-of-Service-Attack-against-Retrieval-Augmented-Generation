@@ -1,0 +1,26 @@
+# ── Core ML / Inference ───────────────────────────────────────────────────────
+torch>=2.0.0                  # deep learning framework (CUDA 11.8+ recommended)
+transformers>=4.35.0          # Hugging Face model hub; used for LLM inference and GPT-2 PPL
+accelerate>=0.24.0            # device placement helpers for large models
+bitsandbytes>=0.41.0          # 8-bit quantization (load_in_8bit=True for 7B models)
+
+# ── Retrieval ─────────────────────────────────────────────────────────────────
+sentence-transformers>=2.2.0  # Contriever-msmarco embeddings (RAG retrieval + RAGuard TS filter)
+faiss-cpu>=1.7.4              # FAISS index for nearest-neighbour retrieval
+                              # (use faiss-gpu for GPU-accelerated search)
+
+# ── Data / Config ─────────────────────────────────────────────────────────────
+numpy>=1.24.0
+pyyaml>=6.0                   # YAML config parsing
+tqdm>=4.65.0                  # progress bars
+datasets>=2.14.0              # optional: HuggingFace datasets for NQ / MS MARCO loading
+
+# ── Closed-source API transfer experiments (optional) ─────────────────────────
+# openai>=1.0.0               # GPT-4 transfer
+# anthropic>=0.20.0           # Claude-3.5 transfer
+# google-generativeai>=0.4.0  # Gemini transfer
+
+# ── Notes ─────────────────────────────────────────────────────────────────────
+# Tested on Python 3.10, Ubuntu 22.04, CUDA 11.8 / 12.1.
+# Minimum GPU memory: ~18 GB for a single 7B model in 8-bit; 40 GB for fp16.
+# CPU-only mode is supported but slow (PPL calibration: ~15 min per 150 docs).
