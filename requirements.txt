@@ -23,4 +23,4 @@ datasets>=2.14.0              # optional: HuggingFace datasets for NQ / MS MARCO
 # ── Notes ─────────────────────────────────────────────────────────────────────
 # Tested on Python 3.10, Ubuntu 22.04, CUDA 11.8 / 12.1.
 # Minimum GPU memory: ~18 GB for a single 7B model in 8-bit; 40 GB for fp16.
-# CPU-only mode is supported but slow (PPL calibration: ~15 min per 150 docs).
+# CPU-only mode is supported but slow .
