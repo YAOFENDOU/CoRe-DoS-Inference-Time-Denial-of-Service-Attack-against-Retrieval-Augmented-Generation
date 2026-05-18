@@ -1,52 +1,74 @@
 # CoRe-DoS: Corpus-Reframing Denial-of-Service Attack on RAG Systems
 
+*Under review. Full implementation will be released upon acceptance.*
 
-## Repository Structure
+---
+
+## What Is CoRe-DoS?
+
+CoRe-DoS is an **inference-time** adversarial attack against
+Retrieval-Augmented Generation (RAG) systems.  By injecting a single
+crafted document into the top-*k* retrieved context, the attack conditions
+the target LLM to output a refusal response for any query matching a
+trigger keyword — without modifying the knowledge base or the retriever.
+
+---
+
+## This Repository
+
+This pre-acceptance release contains:
 
 ```
-├── attack/                  Blocker generation and injection logic
-│   ├── blocker.py           CoRe-DoS blocker document construction
-│   └── injector.py          Adversarial document injection into RAG context
-├── data/                    Dataset loading and preprocessing
-├── evaluation/              Evaluation metrics and refusal detection
-├── llm/                     LLM loading and inference (local + API)
-├── retriever/               Contriever and GTR retriever wrappers
-├── trigger/                 Keyword and semantic trigger detection
-├── utils/                   Context management utilities
-├── experiments/
-│   ├── run_experiment.py    Main experiment runner (reads YAML config)
-│   ├── summarize_results.py Aggregate results across experiments
-│   └── configs/             Representative YAML configuration files
-└── requirements.txt
+CoRe-DoS/
+├── README.md              This file
+├── requirements.txt       Python dependencies (detailed)
+└── data/
+    ├── nq_query_ids.txt             Example NQ query IDs (illustrative sample)
+    ├── nq_sample_queries.jsonl      Example query texts (NQ)
+    ├── msmarco_query_ids.txt        Example MS MARCO query IDs (illustrative sample)
+    └── msmarco_sample_queries.jsonl Example query texts (MS MARCO)
 ```
 
-## Quick Start
+**Not included** (released upon acceptance): full attack implementation,
+retriever wrappers, LLM inference code, defense evaluation scripts.
 
-### 1. Install dependencies
+---
+
+## Environment Setup
+
 ```bash
+# Python 3.10+ recommended
 pip install -r requirements.txt
 ```
 
-### 2. Run a CoRe-DoS attack experiment
-```bash
-python experiments/run_experiment.py \
-    --config experiments/configs/config_mistral_7b_nq_instruction_injection.yaml
+See `requirements.txt` for version details and GPU memory notes.
+
+---
+
+## Example Queries
+
+The `data/` folder contains **illustrative examples** of query IDs and
+query texts in the format used during evaluation.  These are provided
+solely to demonstrate the data format; they do not constitute the
+complete evaluation set reported in the paper.
+
+**Format — `*_query_ids.txt`**: one integer query ID per line.
+
+**Format — `*_sample_queries.jsonl`**: one JSON object per line:
+```json
+{"query_id": 607942963334254337, "query": "where do you go when the stars go blue"}
 ```
 
+The original benchmarks can be obtained from:
 
-## Data
+- **NQ** (Natural Questions):
+  https://ai.google.com/research/NaturalQuestions
+- **MS MARCO**:
+  https://microsoft.github.io/msmarco/
 
-The experiments use the Natural Questions (NQ) and MS MARCO datasets with
-Contriever-msmarco as the retriever. Pre-built FAISS indices are required;
-see `data/download_nq.py` and `data/download_msmarco.py` for data preparation.
+---
 
-## Configuration
 
-Each YAML config file specifies:
-- `dataset`: name, data directory, number of queries
-- `retriever`: type, index path, top-k
-- `trigger`: keyword or semantic trigger settings
-- `attack`: mode (instruction_injection / instruction_replace), insert position
-- `llm`: model name, inference parameters
-- `output`: results directory
+ The complete codebase will be released upon paper acceptance and maintained thereafter.
 
+---
