@@ -1,6 +1,5 @@
 # CoRe-DoS: Corpus-Reframing Denial-of-Service Attack on RAG Systems
 
-Source code release for the paper submission.
 
 ## Repository Structure
 
