@@ -1,4 +1,4 @@
-#CoRe-DoS: Inference-Time Denial-of-Service Attack against Retrieval-Augmented Generation
+## CoRe-DoS: Inference-Time Denial-of-Service Attack against Retrieval-Augmented Generation
 
 *Under review. Full implementation will be released upon acceptance.*
 
