@@ -1,4 +1,4 @@
-# CoRe-DoS: Corpus-Reframing Denial-of-Service Attack on RAG Systems
+#CoRe-DoS: Inference-Time Denial-of-Service Attack against Retrieval-Augmented Generation
 
 *Under review. Full implementation will be released upon acceptance.*
 
